@@ -36,4 +36,35 @@ public class BST<E extends Comparable> {
     public boolean isEmpty() {
         return size == 0;
     }
+
+    private void add(E e) {
+        if(root == null) {
+            root = new Node(e);
+            size ++;
+        }
+        else {
+            add(root, e);
+        }
+    }
+
+    private void add(Node node, E e) {
+        if(e.equals(node.e)){
+            return;
+        }
+        if(e.compareTo(root.e) < 0 && root.left == null) {
+            root.left = new Node(e);
+            size ++;
+            return;
+        }else if(e.compareTo(root.e) > 0 && root.right == null) {
+            root.right = new Node(e);
+            size ++;
+            return;
+        }
+        if(e.compareTo(root.e) < 0) {
+            add(root.left, e);
+        }else{
+            add(root.right, e);
+        }
+
+    }
 }

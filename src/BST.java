@@ -37,7 +37,7 @@ public class BST<E extends Comparable> {
         return size == 0;
     }
 
-    private void add(E e) {
+    public void add(E e) {
 //        if(root == null) {
 //            root = new Node(e);
 //            size ++;
@@ -73,7 +73,7 @@ public class BST<E extends Comparable> {
         return node;
     }
 
-    private boolean contain(E e) {
+    public boolean contain(E e) {
         return contain(root, e);
     }
 
@@ -88,5 +88,19 @@ public class BST<E extends Comparable> {
         }else{
             return contain(node.right, e);
         }
+    }
+
+    public void preOrder() {
+        preOrder(root);
+    }
+
+    private void preOrder(Node node) {
+
+        if(node == null) {
+            return;
+        }
+        System.out.println(node.e);
+        preOrder(node.left);
+        preOrder(node.right);
     }
 }

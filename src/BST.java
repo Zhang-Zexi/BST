@@ -1,4 +1,6 @@
 import javax.xml.soap.Node;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -133,7 +135,7 @@ public class BST<E extends Comparable> {
         System.out.println(node.e);
     }
 
-    public void preOrderNR(){
+    public void preOrderNR() {
 
         Stack<Node> stack = new Stack<>();
         stack.push(root);
@@ -146,6 +148,22 @@ public class BST<E extends Comparable> {
             }
             if(cur.left != null){
                 stack.push(cur.left);
+            }
+        }
+    }
+
+    public void levelOrder() {
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            Node cur = q.remove();
+            System.out.println(cur.e);
+
+            if (cur.left != null) {
+                q.add(cur.left);
+            }
+            if (cur.right != null) {
+                q.add(cur.right);
             }
         }
     }

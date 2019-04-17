@@ -65,10 +65,10 @@ public class BST<E extends Comparable> {
             size ++;
             return new Node(e);
         }
-        if(e.compareTo(root.e) < 0) {
-            root.left = add(root.left, e);
+        if(e.compareTo(node.e) < 0) {
+            node.left = add(node.left, e);
         }else{
-            root.right = add(root.right, e);
+            node.right = add(node.right, e);
         }
         return node;
     }

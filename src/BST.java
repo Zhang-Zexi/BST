@@ -168,6 +168,68 @@ public class BST<E extends Comparable> {
         }
     }
 
+    public E miniMum() {
+        if (size == 0) {
+           throw new IllegalArgumentException("BST is empty");
+        }
+        return miniMum(root).e;
+    }
+
+    private Node miniMum(Node node) {
+        if (node.left == null) {
+            return node;
+        }
+        return miniMum(node.left);
+    }
+
+    public E maxMum() {
+        if (size == 0) {
+            throw new IllegalArgumentException("BST is empty !");
+        }
+        return maxMum(root).e;
+    }
+
+    private Node maxMum(Node node) {
+        if (node.right == null) {
+            return node;
+        }
+        return maxMum(node.right);
+    }
+
+    public E removeMin() {
+        E ret = miniMum();
+        root = removeMin(root);
+        return ret;
+    }
+
+    public E removeMax() {
+        E ret = maxMum();
+        root = removeMax(root);
+        return ret;
+    }
+
+    private Node removeMin(Node node) {
+        if (node.left == null) {
+            Node retNode = node.right;
+            node.right = null;
+            size --;
+            return retNode;
+        }
+        node.left = removeMin(node.left);
+        return node;
+    }
+
+    private Node removeMax(Node node) {
+        if (node.left == null) {
+            Node retNode = node.right;
+            node.right = null;
+            size --;
+            return retNode;
+        }
+        node.left = removeMin(node.left);
+        return node;
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();

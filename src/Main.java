@@ -15,5 +15,7 @@ public class Main {
             bst.add(num);
         }
         bst.preOrder();
+        System.out.println();
+        System.out.println(bst);
     }
 }

@@ -98,6 +98,10 @@ public class BST<E extends Comparable> {
         inOrder(root);
     }
 
+    public void postOrder() {
+        inOrder(root);
+    }
+
     private void preOrder(Node node) {
 
         if(node == null) {
@@ -117,6 +121,19 @@ public class BST<E extends Comparable> {
         System.out.println(node.e);
         inOrder(node.right);
     }
+
+    private void postOrder(Node node) {
+
+        if(node == null) {
+            return;
+        }
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.println(node.e);
+    }
+
+
+
 
     @Override
     public String toString() {

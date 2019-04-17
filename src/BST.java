@@ -1,4 +1,5 @@
 import javax.xml.soap.Node;
+import java.util.Stack;
 
 /**
  * @ClassName BST
@@ -132,8 +133,22 @@ public class BST<E extends Comparable> {
         System.out.println(node.e);
     }
 
+    public void preOrderNR(){
 
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while(!stack.isEmpty()){
+            Node cur = stack.pop();
+            System.out.println(cur.e);
 
+            if(cur.right != null){
+                stack.push(cur.right);
+            }
+            if(cur.left != null){
+                stack.push(cur.left);
+            }
+        }
+    }
 
     @Override
     public String toString() {

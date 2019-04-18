@@ -230,6 +230,52 @@ public class BST<E extends Comparable> {
         return node;
     }
 
+    public void remove(E e) {
+        //为什么返回值变为root了
+        root = remove(root, e);
+    }
+
+    private Node remove(Node node, E e) {
+
+        if (node == null) {
+            return null;
+        }
+
+        if (e.compareTo(node.e) < 0) {
+            node.left = remove(node.left, e);
+            return node;
+        }
+
+        if (e.compareTo(node.e) > 0) {
+            node.right = remove(node.right, e);
+            return node;
+        } else {
+//            e = node.e
+            if (node.left == null) {
+                Node rightNode = node.right;
+                node.right = null;
+                size --;
+                return rightNode;
+            }
+            if(node.right == null) {
+                Node leftNode = node.left;
+                node.left = null;
+                size --;
+                return leftNode;
+            }
+
+            Node successor = miniMum(node.right);
+            successor.right = removeMin(node.right);
+            // size++
+            successor.left = node.left;
+
+            node.left = node.right = null;
+            //size --
+            return successor;
+        }
+    }
+
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
